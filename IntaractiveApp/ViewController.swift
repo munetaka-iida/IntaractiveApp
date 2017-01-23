@@ -13,14 +13,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // シーンコントローラーのインスタンスを作成
         let scene = SceneController()
-        print(scene.loadFile("0"))
-        
+//        print(scene.loadFile("0"))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

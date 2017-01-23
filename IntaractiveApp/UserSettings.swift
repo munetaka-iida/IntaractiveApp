@@ -11,11 +11,11 @@ import Foundation
 enum UserSettings: String {
     
     // 会話のログ
-    case textLog = "textLog"
+    case sceneLog = "sceneLog"
     // 読み込まれたテキスト
-    case stackText = "stackText"
+    case sceneText = "sceneText"
     // ストーリーファイル名
-    case lastTextName = "lastTextName"
+    case lastFile = "lastFile"
     // ストーリーファイルの最後に読み込んだ行数
     case countColmun = "countColumn"
     
