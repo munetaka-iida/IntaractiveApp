@@ -12,14 +12,29 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let scene = SceneController()
+        print(scene.loadFile("0"))
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
 }
 
+extension String {
+    
+    var lines: [String] {
+        var lines = [String]()
+        self.enumerateLines { (line, stop) -> () in
+            if line.characters.count > 0 {
+                lines.append(line)
+            }
+        }
+        return lines
+    }
+    
+}
