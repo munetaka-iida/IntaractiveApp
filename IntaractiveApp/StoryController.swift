@@ -15,10 +15,40 @@ class StoryController: UIViewController {
         guard UserSettings.isAutoPlayEnabled.bool() else {
             return
         }
-        // １行取得する
-        // １行を解析して処理する
-        var test = getTweet().components(separatedBy: "|")
-        print(test)
+        
+        // テキストファイルの１行目を取得する
+        let line = getLine().components(separatedBy: "|")
+        print(line)
+        
+        
+        // -- コマンド --
+        
+        if line.count > 1 {
+            let cmd = line[0].components(separatedBy: " ")
+            print("cmd:", cmd[0])
+            
+            switch cmd[0] {
+            case "on":
+                print("on")
+            case "off":
+                print("off")
+            case "next":
+                print("next")
+            case "wait":
+                print("wait")
+            case "button":
+                print("button")
+            default:
+                print("default")
+            }
+            
+            print(line[1].trim())
+            
+        
+        } else {
+            // 普通のテキストを表示する
+        }
+
         
     }
 
@@ -39,14 +69,14 @@ class StoryController: UIViewController {
 
     }
     
-    func getTweet() -> String {
-        if let tweet = UserSettings.storyText.array().first {
-            // １行削除
+    // UserSettings.storyText から１行目のテキストを取得する
+    func getLine() -> String {
+        if let line = UserSettings.storyText.array().first {
+            // 取得した１行目を削除して保存する
             var _storyText = UserSettings.storyText.array()
             _storyText.removeFirst()
-            // 保存
             UserSettings.storyText.set(_storyText)
-            return tweet
+            return line
         }
         return ""
     }

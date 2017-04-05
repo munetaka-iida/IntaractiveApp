@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let debugMode = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +29,10 @@ class ViewController: UIViewController {
     }
     
     func setDefaultUserSettings() {
-        // isAutoPlayEnabledの存在で判断
-        guard UserSettings.isAutoPlayEnabled.isSet() else {
-            return
-        }
+        // 初期化を判断する
+//        guard UserSettings.isAutoPlayEnabled.isSet() else {
+//            return
+//        }
         UserSettings.isAutoPlayEnabled.set(true)
         UserSettings.lastFile.set("0")
         UserSettings.countColmun.set(0)
@@ -39,11 +41,12 @@ class ViewController: UIViewController {
     }
     
     func DebugPrinter() {
-        print(UserSettings.isAutoPlayEnabled.bool())
-        print(UserSettings.lastFile.string())
-        print(UserSettings.countColmun.integer())
-        print(UserSettings.storyLog.array())
-        print(UserSettings.storyText.array())
+        print("Debug Printer ----------------")
+        print("isAutoEnabled:", UserSettings.isAutoPlayEnabled.bool())
+        print("Last File    :", UserSettings.lastFile.string())
+        print("Count Colmun :", UserSettings.countColmun.integer())
+        print("Story Log    :", UserSettings.storyLog.array())
+        print("Story Array  :", UserSettings.storyText.array())
     }
     
 }
@@ -66,5 +69,22 @@ extension String {
             }
         }
         return lines
+    }
+}
+
+extension String {
+    func trim(_ string: String = " ") -> String {
+        var set = Set<Character>()
+        for c in string.characters {
+            set.insert(Character(String(c)))
+        }
+        return trim(set)
+    }
+    func trim(_ characters: Set<Character>) -> String {
+        if let index = self.characters.index(where: {!characters.contains($0)}) {
+            return self[index..<self.endIndex]
+        } else {
+            return ""
+        }
     }
 }
