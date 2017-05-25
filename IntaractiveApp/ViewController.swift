@@ -11,16 +11,24 @@ import UIKit
 class ViewController: UIViewController {
     
     let debugMode = false
-
+    let Story = StoryController()
+    
+    @IBAction func tapDisplay(_ sender: Any) {
+        Story.showMsg()
+    }
+    
+    @IBAction func tapButton(_ sender: Any) {
+        print("tap!")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 初回プレイ時のUserSettingsを初期化する
         setDefaultUserSettings()
         
-        DebugPrinter()
+//        DebugPrinter()
         // ストーリーコントローラーのインスタンスを作成
-        let story = StoryController()
-        story.autoPlay()
+        Story.showMsg()
         
     }
     
@@ -41,7 +49,6 @@ class ViewController: UIViewController {
     }
     
     func DebugPrinter() {
-        print("Debug Printer ----------------")
         print("isAutoEnabled:", UserSettings.isAutoPlayEnabled.bool())
         print("Last File    :", UserSettings.lastFile.string())
         print("Count Colmun :", UserSettings.countColmun.integer())
@@ -58,33 +65,4 @@ func loadSceneFile(_ name: String) -> Array<String> {
         return textData.lines
     }
     return []
-}
-
-extension String {
-    var lines: [String] {
-        var lines = [String]()
-        self.enumerateLines { (line, stop) -> () in
-            if line.characters.count > 0 {
-                lines.append(line)
-            }
-        }
-        return lines
-    }
-}
-
-extension String {
-    func trim(_ string: String = " ") -> String {
-        var set = Set<Character>()
-        for c in string.characters {
-            set.insert(Character(String(c)))
-        }
-        return trim(set)
-    }
-    func trim(_ characters: Set<Character>) -> String {
-        if let index = self.characters.index(where: {!characters.contains($0)}) {
-            return self[index..<self.endIndex]
-        } else {
-            return ""
-        }
-    }
 }

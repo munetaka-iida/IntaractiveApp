@@ -1,28 +1,14 @@
-//
-//  UserSettings.swift
-//  IntaractiveApp
-//
-//  Created by munetaka on 2017/01/23.
-//  Copyright © 2017年 iida. All rights reserved.
-//
+// UserSettingsにデータを格納する
 
 import Foundation
 
 enum UserSettings: String {
-    
-    // 会話のログ
+
     case isAutoPlayEnabled = "isAutoPlayEnabled"
     
-    // 会話のログ
-    case storyLog = "storyLog"
-    
-    // 読み込まれたテキスト
-    case storyText = "storyText"
-    
-    // ストーリーファイル名
-    case lastFile = "lastFile"
-
-    // ストーリーファイルの最後に読み込んだ行数
+    case storyLog    = "storyLog"
+    case storyText   = "storyText"
+    case lastFile    = "lastFile"
     case countColmun = "countColumn"
     
     // String
@@ -95,7 +81,7 @@ enum UserSettings: String {
         return UserDefaults.standard.object(forKey: self.rawValue)
     }
     
-    // 設定されているか
+    // Keyが設定されていればTrueを返す
     func isSet() -> Bool {
         if (UserDefaults.standard.object(forKey: self.rawValue) != nil) {
             return true
