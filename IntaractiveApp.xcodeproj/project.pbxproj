@@ -15,6 +15,7 @@
 		0BEB143F1E362B23005BB956 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEB143E1E362B23005BB956 /* UserSettings.swift */; };
 		0BEB14461E36347F005BB956 /* StoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEB14451E36347F005BB956 /* StoryController.swift */; };
 		FB7A2EE11ED6A92700A58FD4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7A2EE01ED6A92700A58FD4 /* Extension.swift */; };
+		FB7A2EE31ED6BCDC00A58FD4 /* 1.txt in Resources */ = {isa = PBXBuildFile; fileRef = FB7A2EE21ED6BCDC00A58FD4 /* 1.txt */; };
 		FBC756B41E9398FD002476D2 /* 0.txt in Resources */ = {isa = PBXBuildFile; fileRef = FBC756B31E9398FD002476D2 /* 0.txt */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		0BEB143E1E362B23005BB956 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		0BEB14451E36347F005BB956 /* StoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryController.swift; sourceTree = "<group>"; };
 		FB7A2EE01ED6A92700A58FD4 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		FB7A2EE21ED6BCDC00A58FD4 /* 1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.txt; sourceTree = "<group>"; };
 		FBC756B31E9398FD002476D2 /* 0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 0.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +70,7 @@
 				0BEB142C1E362A00005BB956 /* AppDelegate.swift */,
 				0BEB142E1E362A00005BB956 /* ViewController.swift */,
 				FBC756B31E9398FD002476D2 /* 0.txt */,
+				FB7A2EE21ED6BCDC00A58FD4 /* 1.txt */,
 				0BEB14381E362A00005BB956 /* Info.plist */,
 			);
 			path = IntaractiveApp;
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BEB14371E362A00005BB956 /* LaunchScreen.storyboard in Resources */,
+				FB7A2EE31ED6BCDC00A58FD4 /* 1.txt in Resources */,
 				0BEB14341E362A00005BB956 /* Assets.xcassets in Resources */,
 				0BEB14321E362A00005BB956 /* Main.storyboard in Resources */,
 				FBC756B41E9398FD002476D2 /* 0.txt in Resources */,

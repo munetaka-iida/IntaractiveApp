@@ -12,55 +12,86 @@ class StoryController: UIViewController {
     
     func showMsg() {
         
-        let line = getLine().components(separatedBy: "|")
+        let line = getLine().trim().components(separatedBy: "|")
 
         // コマンド
         if line.count > 1 {
-            let cmd = line[0].components(separatedBy: " ")
+            
+            let cmd = line[0].trim().components(separatedBy: " ")
             
             switch cmd[0] {
             case "on":
-                print("on")
+                let flags = cmd[1].components(separatedBy: ",")
+                for flag in flags {
+                    UserDefaults.standard.set(true, forKey: flag.trim())
+                    UserDefaults.standard.synchronize()
+                }
+                if 1 < line[1].trim().characters.count {
+                    print(line[1].trim())
+                } else {
+                    showMsg()
+                }
             case "off":
-                print("off")
+                let flags = cmd[1].components(separatedBy: ",")
+                for flag in flags {
+                    UserDefaults.standard.set(false, forKey: flag.trim())
+                    UserDefaults.standard.synchronize()
+                }
+                if 1 < line[1].trim().characters.count {
+                    print(line[1].trim())
+                } else {
+                    showMsg()
+                }
             case "next":
-                print("next")
-            case "wait":
-                print("wait")
+                UserSettings.storyText.set(loadSceneFile(cmd[1]))
+                if 1 < line[1].trim().characters.count {
+                    print(line[1].trim())
+                } else {
+                    showMsg()
+                }
+            case "show":
+                var canShowMsg = true
+                let flags = cmd[1].components(separatedBy: ",")
+                for flag in flags {
+                    if UserDefaults.standard.bool(forKey: flag.trim()) == false {
+                        canShowMsg = false
+                        break
+                    }
+                }
+                if canShowMsg {
+                    print(line[1].trim())
+                } else {
+                    showMsg()
+                }
             case "button":
                 print("button")
             default:
                 print("default")
             }
-            print(line[1].trim())
-        
+            
+            
         } else {
-            // 普通のテキストを表示する
             print(line[0].trim())
         }
     }
 
-    func setupMsg(_ text: String) {
-        
-        // 対象の文字列
-        let targetString = text
-        
-        // 正規表現パターン
-        let matchPattern = ""
-
-        print("test")
-        // マッチした文字列をすべて表示
-        let matches = getMatchStrings(targetString: targetString, pattern: matchPattern)
-        for str in matches {
-            print(str)
-        }
-
-    }
+//    func setupMsg(_ text: String) {
+//        
+//        let targetString = text
+//        let matchPattern = ""
+//        print("test")
+//        // マッチした文字列をすべて表示
+//        let matches = getMatchStrings(targetString: targetString, pattern: matchPattern)
+//        for str in matches {
+//            print(str)
+//        }
+//
+//    }
     
-    // UserSettings.storyText から１行目のテキストを取得する
+    // ストーリーテキストから１行取得する
     func getLine() -> String {
         if let line = UserSettings.storyText.array().first {
-            // 取得した１行目を削除して保存する
+            // ストーリーテキストの取得した１行目を削除して、更新する
             var _storyText = UserSettings.storyText.array()
             _storyText.removeFirst()
             UserSettings.storyText.set(_storyText)
@@ -70,7 +101,6 @@ class StoryController: UIViewController {
     }
     
     // 正規表現にマッチした文字列を格納した配列を返す
-    // @return: array<String>
     func getMatchStrings(targetString: String, pattern: String) -> [String] {
         var matchStrings:[String] = []
         do {

@@ -19,6 +19,15 @@ class ViewController: UIViewController {
     
     @IBAction func tapButton(_ sender: Any) {
         print("tap!")
+        
+        print(UserDefaults.standard.bool(forKey: "a01"))
+        print(UserDefaults.standard.bool(forKey: "a02"))
+        print(UserDefaults.standard.bool(forKey: "a03"))
+        
+        print(UserDefaults.standard.bool(forKey: "b01"))
+        print(UserDefaults.standard.bool(forKey: "b02"))
+        print(UserDefaults.standard.bool(forKey: "b03"))
+        
     }
     
     override func viewDidLoad() {
